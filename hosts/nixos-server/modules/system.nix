@@ -9,9 +9,9 @@
 
   # Virtualization
   # virtualisation.containers.enable = true;
-  virtualisation.docker = {
-    enable = true;
-  };
+  # virtualisation.docker = {
+  #   enable = true;
+  # };
 
   fileSystems =
     let
