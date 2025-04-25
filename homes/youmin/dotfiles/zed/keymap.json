@@ -1,0 +1,122 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-j": null,
+      "ctrl-n": null,
+      "ctrl-p": null,
+      "alt-i": "workspace::ToggleBottomDock",
+      "alt-t": "workspace::NewTerminal"
+    }
+  },
+  {
+    "context": "(vim_mode == normal || ProjectPanel)",
+    "bindings": {
+      "space e": "workspace::ToggleLeftDock",
+      "space f f": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "j k": ["workspace::SendKeystrokes", "escape"],
+      "ctrl-d": "editor::Delete",
+      "ctrl-e": "editor::MoveToEndOfLine",
+      "ctrl-a": "editor::MoveToBeginningOfLine",
+      "ctrl-s": "editor::ShowCompletions",
+      "alt-l": "editor::AcceptEditPrediction",
+      "alt-shift-l": "editor::AcceptPartialEditPrediction"
+    }
+  },
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      ">": "vim::Indent",
+      "<": "vim::Outdent",
+      "space o": "outline::Toggle",
+      ";": "command_palette::Toggle",
+      "K": "editor::Hover",
+      "g h": "vim::StartOfLineDownward",
+      "g l": "vim::EndOfLine",
+      "alt-j": "editor::MoveLineDown",
+      "alt-k": "editor::MoveLineUp",
+      "alt-l": "vim::SelectNext",
+      "alt-h": "vim::SelectPrevious",
+      "space /": "editor::ToggleComments",
+      "space f m": "editor::Format",
+      "space c a": "editor::ToggleCodeActions",
+      "space p": "editor::Paste",
+      "space r a": "editor::Rename",
+      "space b o": "pane::CloseAllItems",
+      "space x": "pane::CloseActiveItem"
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "space /": "editor::ToggleComments",
+      ">": "editor::Indent",
+      "<": "editor::Outdent",
+      "alt-j": "editor::MoveLineDown",
+      "alt-k": "editor::MoveLineUp",
+      "shift-s": ["vim::PushAddSurrounds", {}]
+    }
+  },
+  {
+    "context": "ProjectPanel || CollabPanel || OutlinePanel || ChatPanel || VimControl || EmptyPane || SharedScreen || MarkdownPreview || KeyContextView",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "Dock || Terminal",
+    "bindings": {
+      "ctrl-w ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-w ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-w ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-w ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    // netrw compatibility
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      ";": "command_palette::Toggle",
+      ":": "command_palette::Toggle",
+      // "%": "project_panel::NewFile",
+      "a": "project_panel::NewFile",
+      "/": "project_panel::NewSearchInDirectory",
+      "d": "project_panel::Trash",
+      "D": "project_panel::Delete",
+      "x": "project_panel::Cut",
+      "p": "project_panel::Paste",
+      "enter": "project_panel::OpenPermanent",
+      "escape": "menu::Cancel",
+      "h": "project_panel::CollapseSelectedEntry",
+      "j": "menu::SelectNext",
+      "e": "project_panel::ExpandSelectedEntry",
+      "k": "menu::SelectPrev",
+      // "l": "project_panel::ExpandSelectedEntry",
+      "l": "project_panel::OpenPermanent",
+      "shift-d": "project_panel::Delete",
+      "shift-r": null,
+      "r": "project_panel::Rename",
+      // "t": "project_panel::OpenPermanent",
+      // "v": "project_panel::OpenPermanent",
+      // "t": null,
+      "v": null,
+      "P": "project_panel::Open",
+      "O": "project_panel::RevealInFileManager",
+      "s": "project_panel::OpenWithSystem",
+      "shift-g": "menu::SelectLast",
+      "t": "project_search::ToggleFilters",
+      "g g": "menu::SelectFirst",
+      "-": "project_panel::SelectParent",
+      "ctrl-6": "pane::AlternateFile",
+      "ctrl-w": "project_panel::CollapseAllEntries"
+    }
+  }
+]

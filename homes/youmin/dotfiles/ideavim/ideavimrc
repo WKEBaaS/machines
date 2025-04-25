@@ -1,0 +1,147 @@
+""" Map leader to space ---------------------
+let mapleader=" "
+
+" base configuration
+set nu
+" set whichwrap+=h,l
+set scrolloff=5
+set incsearch
+
+""" Handlers
+sethandler <M-j> n-v:vim i:ide
+sethandler <M-k> n-v:vim i:ide
+sethandler <C-n> n-v:vim i:ide
+sethandler <C-o> n-v:vim i:ide
+sethandler <C-h> n-v:vim i:ide
+sethandler <C-j> n-v:vim i:ide
+sethandler <C-k> n-v:vim i:ide
+sethandler <C-l> n-v:vim i:ide
+sethandler <C-a> i:vim n-v:ide
+sethandler <C-d> i:vim n-v:ide
+sethandler <C-e> i:vim n-v:ide
+sethandler <M-l> i:vim
+
+""" Plugins ---------------------------------
+set ideajoin
+set surround
+set sneak
+
+set nerdtree
+let g:NERDTreeMapActivateNode = "l"
+let g:NERDTreeMapJumpParent   = "h"
+let g:NERDTreeMapPreview="<Tab>"
+nmap <C-n> :NERDTree <CR>
+
+""" The followings plugins should be installed in plugins store
+
+" IdeaVim extension: auto input method switch
+" set keep-english-in-normal-and-restore-in-insert
+set keep-english-in-normal enable auto-switch feature
+
+set which-key
+set notimeout
+" close the popup and don't process formerly typed keys
+let g:WhichKey_ProcessUnknownMappings = "false"
+let g:WhichKey_DefaultDelay = 400
+
+""" Mappings --------------------------------
+nmap <leader><leader>r <Action>(IdeaVim.ReloadVimRc.reload)
+
+imap jk <Esc>
+nmap ; :
+map gh g0
+map gl g$
+
+# Editor
+imap <C-a> <Action>(EditorLineStart)
+imap <C-e> <Action>(EditorLineEnd)
+imap <C-d> <Action>(EditorDelete)
+
+" Indent
+nmap > >>
+nmap < <<
+xmap > >gv
+xmap < <gv
+
+imap <M-l> <Action>(copilot.applyInlays)
+imap <M-S-l> <Action>(copilot.applyInlaysNextLine)
+
+" Move Line
+map <M-k> <Action>(MoveLineUp)
+map <M-j> <Action>(MoveLineDown)
+
+imap <C-k> <Action>(EditorDeleteToLineEnd)
+
+" Multiple Cursors
+nmap <C-S-j> <Action>(EditorCloneCaretBelow)
+nmap <C-S-k> <Action>(EditorCloneCaretAbove)
+
+" Comment
+map <leader>/         <Action>(CommentByLineComment)
+map <leader><leader>/ <Action>(CommentByBlockComment)
+
+" System Clipboard
+map <leader>y "+y
+map <leader>Y "+yy
+map <leader>p "+p
+map <leader>P "+P
+map <leader>d "+d
+" Dont copy replaced text
+" xmap p "_dp
+
+" code information
+imap <C-s> <Action>(CodeCompletion)
+imap <C-S-s> <Action>(SmartTypeCompletion)
+nmap <S-k> <Action>(ShowHoverInfo)
+nmap ]d <Action>(GotoNextError)
+nmap [d <Action>(GotoPreviousError)
+
+" Refactoring and formatting
+nmap <leader>ra <Action>(RenameElement)
+nmap <leader>ca <Action>(ShowIntentionActions)
+nmap <leader>fm <Action>(ReformatCode)
+
+nmap <leader>x <Action>(CloseActiveTab)
+nmap <leader>bo <Action>(CloseAllEditors)
+
+# Debugging
+nmap <leader>dd <Action>(Debug)
+nmap <C-h> <Action>(StepOut)
+nmap <C-j> <Action>(StepOver)
+nmap <C-k> <Action>(StepInto)
+nmap <C-l> <Action>(Resume)
+
+" Fold
+map <leader>ff <Action>(CollapseRegion)
+map <leader>fo <Action>(ExpandRegion)
+
+""" Window management & navigation
+""" nmap <C-h> <C-w><C-h>
+""" nmap <C-l> <C-w><C-l>
+
+if has('ide')
+  if &ide =~? 'datagrip'
+     map <leader>q <Action>(Console.Jdbc.Execute)
+
+     let g:WhichKeyDesc_RunQuery = "<leader>q Run query in console"
+  endif
+endif
+
+""" Which Key -------------------------------
+let g:WhichKeyDesc_ReloadVimRc        = "<leader><leader>r Reload vimrc"
+let g:WhichKeyDesc_CommentBlock       = "<leader><leader>/ Comment Block"
+let g:WhichKeyDesc_CommentLine        = "<leader>/ Comment Line"
+let g:WhichKeyDesc_Yank               = "<leader>y Yank to system clipboard"
+let g:WhichKeyDesc_YankLine           = "<leader>Y Yank line to system clipboard"
+let g:WhichKeyDesc_P_after            = "<leader>p Paste from system clipboard after cursor"
+let g:WhichKeyDesc_P_before           = "<leader>P Paste from system clipboard before cursor"
+let g:WhichKeyDesc_RenameElement      = "<leader>r Rename element"
+let g:WhichKeyDesc_ReformatCode       = "<leader>fm Reformat Code"
+let g:WhichKeyDesc_FoldCollapse       = "<leader>ff Fold region"
+let g:WhichKeyDesc_FoldExpand         = "<leader>fo Unfold region"
+let g:WhichKeyDesc_Refactoring        = "<leader>c Prefix: Refactoring and formatting"
+let g:WhichKeyDesc_VimMotion          = "<leader>vm Prefix: Vim Motion"
+let g:WhichKeyDesc_Goto_Beginning     = "gh Goto beginning"
+let g:WhichKeyDesc_Goto_Ending        = "gl Goto ending"
+let g:WhichKeyDesc_NextDiagnostic     = "]d Goto Next diagnostic"
+let g:WhichKeyDesc_PreviousDiagnostic = "[d Goto Previous diagnostic"
