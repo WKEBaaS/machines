@@ -42,7 +42,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  networking.hostName = "nixos-baas"; # Define your hostname.
+  # networking.hostName = "nixos-baas"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   networking.interfaces.eth0.ipv4.addresses = [
