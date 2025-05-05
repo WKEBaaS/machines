@@ -33,6 +33,8 @@ let
         homeDir
         hm-nixos
       ];
+      lib = nixpkgs.lib.extend (self: super: { custom = import ../lib { inherit (nixpkgs) lib; }; });
+
     };
 in
 {
