@@ -52,6 +52,9 @@
     # python312
     # rust-bin.stable.latest.default
     # rust-analyzer
+
+    # DevOps
+    kubectl
   ];
 
   programs = {
