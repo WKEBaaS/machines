@@ -42,18 +42,18 @@ in
       hosts = [
         {
           name = "cloud-server";
-          config = ./nixos-server/configuration.nix;
+          config = ./cloud-server/configuration.nix;
         }
         {
           name = "cloud-worker-01";
-          config = ./nixos-worker/configuration.nix;
+          config = ./cloud-worker/configuration.nix;
         }
       ];
     in
     builtins.listToAttrs (
       map (host: {
         name = host.name;
-        value = mkHost host.name host.config;
+        value = mkHost host;
       }) hosts
     );
 }
