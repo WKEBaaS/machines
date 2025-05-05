@@ -41,11 +41,11 @@ in
     let
       hosts = [
         {
-          name = "nixos-server";
+          name = "cloud-server";
           config = ./nixos-server/configuration.nix;
         }
         {
-          name = "nixos-worker-01";
+          name = "cloud-worker-01";
           config = ./nixos-worker/configuration.nix;
         }
       ];
