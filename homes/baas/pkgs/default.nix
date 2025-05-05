@@ -37,18 +37,18 @@
     lazygit
 
     # lsp related
-    # nixfmt-rfc-style # Nix formatter
-    # nil
+    nixfmt-rfc-style # Nix formatter
+    nil
     # kdlfmt
     # helm-ls
     # hadolint # Dockerfile linter
 
     # languages
+    nodejs_22
+    deno
     # go
     # go-migrate
-    # nodejs_22
     # pnpm
-    # deno
     # python312
     # rust-bin.stable.latest.default
     # rust-analyzer

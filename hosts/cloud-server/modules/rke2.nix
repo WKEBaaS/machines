@@ -11,6 +11,10 @@
     ];
 
     cni = "cilium";
+
+    disable = [
+      "rke2-ingress-nginx"
+    ];
   };
 
   networking.firewall.allowedTCPPorts = [
