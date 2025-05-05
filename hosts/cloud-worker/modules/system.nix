@@ -10,7 +10,7 @@
   # Virtualization
   # virtualisation.containers.enable = true;
   virtualisation.docker = {
-    enable = true;
+    enable = false;
   };
 
   fileSystems =

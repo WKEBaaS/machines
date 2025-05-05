@@ -34,7 +34,6 @@ let
         hm-nixos
       ];
       lib = nixpkgs.lib.extend (self: super: { custom = import ../lib { inherit (nixpkgs) lib; }; });
-
     };
 in
 {
@@ -48,6 +47,10 @@ in
         }
         {
           name = "cloud-worker-01";
+          config = ./cloud-worker/configuration.nix;
+        }
+        {
+          name = "cloud-worker-02";
           config = ./cloud-worker/configuration.nix;
         }
       ];
