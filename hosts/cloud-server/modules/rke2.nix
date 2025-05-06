@@ -10,7 +10,7 @@
       "--service-cidr=172.20.0.0/16"
     ];
 
-    cni = "canal";
+    cni = "cilium";
 
     disable = [
       "rke2-ingress-nginx"
