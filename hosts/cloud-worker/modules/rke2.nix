@@ -11,4 +11,11 @@
   sops.secrets = {
     "rke2/node_token" = { };
   };
+
+  networking.firewall.allowedTCPPorts = [
+    10250
+    # Cilium ports
+    4240
+    8472
+  ];
 }

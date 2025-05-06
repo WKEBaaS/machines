@@ -20,9 +20,14 @@
   networking.firewall.allowedTCPPorts = [
     6443
     9345
+    10250
     # etcd ports
     2379
     2380
     2381
+    # Cilium ports
+    4240
+    8472
   ];
+  networking.firewall.allowedUDPPorts = [ 8472 ];
 }
