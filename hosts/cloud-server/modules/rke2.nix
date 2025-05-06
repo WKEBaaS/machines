@@ -1,16 +1,16 @@
 { ... }:
 {
   services.rke2 = {
-    enable = true;
+    enable = false;
     role = "server";
 
     extraFlags = [
-      "--disable-kube-proxy"
+      # "--disable-kube-proxy"
       "--cluster-cidr=172.19.0.0/16"
       "--service-cidr=172.20.0.0/16"
     ];
 
-    cni = "cilium";
+    cni = "none";
 
     disable = [
       "rke2-ingress-nginx"

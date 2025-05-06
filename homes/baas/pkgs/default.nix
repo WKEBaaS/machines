@@ -36,11 +36,15 @@
     direnv
     lazygit
 
-    # lsp related
-    nixfmt-rfc-style # Nix formatter
+    # lsp, formatter, linter for editors
+    # lsp
+    helm-ls
+    lua-language-server
     nil
-    # kdlfmt
-    # helm-ls
+    # formatter
+    nixfmt-rfc-style
+    stylua
+    # linter
     # hadolint # Dockerfile linter
 
     # languages
@@ -55,6 +59,7 @@
 
     # DevOps
     kubectl
+    kubernetes-helm
   ];
 
   programs = {
