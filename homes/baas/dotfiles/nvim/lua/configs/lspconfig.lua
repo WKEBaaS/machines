@@ -29,10 +29,20 @@ M.on_attach = function(_, bufnr)
   map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts "Code action")
   map("n", "<leader>cA", utils.lsp.action.source, opts "Source Action")
 
-  -- map("n", "[d", vim.diagnostic.goto_prev, opts "Prev diagnostic")
-  -- map("n", "]d", vim.diagnostic.goto_next, opts "Next diagnostic")
-
   map("n", "<leader>q", vim.diagnostic.setloclist, opts "Diagnostic loclist")
+end
+
+M.defaults = function()
+  dofile(vim.g.base46_cache .. "lsp")
+  require("nvchad.lsp").diagnostic_config()
+
+  vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+      M.on_attach(_, args.buf)
+    end,
+  })
+
+  vim.lsp.config("*", { capabilities = M.capabilities, on_init = M.on_init })
 end
 
 return M

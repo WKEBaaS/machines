@@ -7,21 +7,21 @@ return {
   { import = "configs.lang.rust" },
   { import = "configs.lang.docker" },
   { import = "configs.lang.sql" },
-  { import = "configs.lang.go" },
+  -- { import = "configs.lang.go" },
   { import = "configs.lang.json" },
   { import = "configs.lang.yaml" },
   { import = "configs.lang.clangd" },
 
-  -- { import = "configs.format.deno" },
   { import = "configs.format.deno" },
   -- { import = "configs.format.prettier" },
 
   {
     "neovim/nvim-lspconfig",
-    -- event = { "VeryLazy", "BufRead" },
+    event = "User FilePost",
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig",
     },
+    config = require("configs.lspconfig").defaults,
   },
 }
