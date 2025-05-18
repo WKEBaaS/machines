@@ -7,11 +7,11 @@ return {
   { import = "configs.lang.rust" },
   { import = "configs.lang.docker" },
   { import = "configs.lang.sql" },
-  { import = "configs.lang.go" },
+  -- { import = "configs.lang.go" },
   { import = "configs.lang.json" },
   { import = "configs.lang.yaml" },
   { import = "configs.lang.clangd" },
-  { import = "configs.lang.tex" },
+  -- { import = "configs.lang.tex" },
 
   { import = "configs.format.deno" },
   -- { import = "configs.format.prettier" },
