@@ -10,10 +10,11 @@ local spec = {
         function()
           require("oil").open()
         end,
-        desc = "Open oil.nvim",
+        desc = "File Open oil.nvim",
       },
     },
     opts = {
+      default_file_explorer = false,
       delete_to_trash = true,
       keymaps = {
         -- ["I"] = "actions.toggle_hidden",

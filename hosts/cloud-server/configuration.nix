@@ -8,7 +8,8 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./modules/system.nix
-    ./modules/rke2.nix
+    # ./modules/rke2.nix
+    # ./modules/k3s.nix
 
     (map lib.custom.relativeToRoot [
       #
@@ -94,7 +95,7 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [
     80
     443

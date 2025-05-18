@@ -87,7 +87,23 @@ local function on_attach(bufnr)
   vim.keymap.set("n", "<C-w>", api.tree.collapse_all, opts "Collapse")
 end
 
-local delete_cmd = (vim.loop.os_uname().sysname == "Darwin") and "trash" or "rm"
+-- local delete_cmd = (vim.loop.os_uname().sysname == "Darwin") and "trash" or "rm"
+local delete_cmd = "trash"
+
+local function open_nvim_tree(data)
+  -- buffer is a directory
+  local directory = vim.fn.isdirectory(data.file) == 1
+
+  if not directory then
+    return
+  end
+
+  -- change to the directory
+  vim.cmd.cd(data.file)
+
+  -- open the tree
+  require("nvim-tree.api").tree.open()
+end
 
 --- @type NvPluginSpec
 return {
@@ -102,13 +118,16 @@ return {
       desc = "Toggle NvimTree",
     },
   },
-  opts = function(_, opts)
-    opts.on_attach = on_attach
-    opts.trash = {
+  init = function()
+    -- start of your init.lua
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
+    vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+  end,
+  opts = {
+    on_attach = on_attach,
+    trash = {
       cmd = delete_cmd,
-    }
-  end,
-  config = function(_, opts)
-    require("nvim-tree").setup(opts)
-  end,
+    },
+  },
 }

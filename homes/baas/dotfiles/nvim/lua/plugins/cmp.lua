@@ -2,6 +2,7 @@
 return {
   {
     "hrsh7th/nvim-cmp",
+    ---@type cmp.Config
     opts = {
       mapping = {
         ["<C-s>"] = require("cmp").mapping.complete(),
@@ -9,21 +10,29 @@ return {
       },
     },
   },
-  {
-    "hrsh7th/nvim-cmp",
-    opts = function(_, opts)
-      local cmp = require "cmp"
-      opts.sorting = {}
-      opts.sorting.comparators = {
-        cmp.config.compare.offset,
-        cmp.config.compare.exact,
-        cmp.config.compare.recently_used,
-        require "clangd_extensions.cmp_scores",
-        cmp.config.compare.kind,
-        cmp.config.compare.sort_text,
-        cmp.config.compare.length,
-        cmp.config.compare.order,
-      }
-    end,
-  },
+  -- { import = "nvchad.blink.lazyspec" },
+  -- {
+  --   "saghen/blink.cmp",
+  --   ---@type blink.cmp.Config
+  --   opts = {
+  --     sources = {
+  --       -- add lazydev to your completion providers
+  --       default = { "lazydev", "lsp", "snippets", "buffer", "path" },
+  --       providers = {
+  --         lazydev = {
+  --           name = "LazyDev",
+  --           module = "lazydev.integrations.blink",
+  --           -- make lazydev completions top priority (see `:h blink.cmp`)
+  --           score_offset = 100,
+  --         },
+  --       },
+  --     },
+  --     keymap = {
+  --       -- stylua: ignore
+  --       ["<C-s>"] = { function(cmp) cmp.show() end, },
+  --       ["<Tab>"] = {},
+  --       ["<S-Tab>"] = {},
+  --     },
+  --   },
+  -- },
 }

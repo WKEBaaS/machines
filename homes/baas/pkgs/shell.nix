@@ -6,24 +6,27 @@
 {
   programs.zsh = {
     enable = true;
-    initExtraBeforeCompInit = ''
-      zstyle ':completion:*' matcher-list '''''' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-      function zvm_config() {
-        ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
-        ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
-        ZVM_KEYTIMEOUT=0.03
-      }
 
-      function zvm_after_init() {
-        eval "$(fzf --zsh)"
-      }
-    '';
-    initExtra = ''
-      export PATH="$HOME/bin:$HOME/.local/bin:$HOME/go/bin:$PATH"
-      export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
-      # Currently, zellij does not follow symlink configs update
-      export ZELLIJ_CONFIG_DIR=${builtins.getEnv "IMPURITY_PATH" + "/homes/youmin/dotfiles/zellij"}
-    '';
+    initContent = lib.mkMerge [
+      (lib.mkOrder 550 ''
+        zstyle ':completion:*' matcher-list '''''' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+        function zvm_config() {
+          ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+          ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+          ZVM_KEYTIMEOUT=0.03
+        }
+
+        function zvm_after_init() {
+          eval "$(fzf --zsh)"
+        }
+      '')
+      (lib.mkOrder 1200 ''
+        export PATH="$HOME/bin:$HOME/.local/bin:$HOME/go/bin:$PATH"
+        export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
+        # Currently, zellij does not follow symlink configs update
+        export ZELLIJ_CONFIG_DIR=${builtins.getEnv "IMPURITY_PATH" + "/homes/youmin/dotfiles/zellij"}
+      '')
+    ];
 
     autocd = true;
 

@@ -6,6 +6,7 @@
 return {
   {
     "rmagatti/auto-session",
+    enabled = false,
     lazy = false,
     keys = {
       { "<leader>wr", "<cmd>SessionSearch<CR>", desc = "Session Search session" },

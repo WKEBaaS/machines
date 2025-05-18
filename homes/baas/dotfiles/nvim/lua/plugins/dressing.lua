@@ -2,6 +2,7 @@
 --- @type NvPluginSpec
 return {
   "stevearc/dressing.nvim",
+  enabled = false,
   lazy = true,
   -- enabled = function()
   --   return LazyVim.pick.want() == "telescope"
