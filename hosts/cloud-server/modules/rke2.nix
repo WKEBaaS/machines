@@ -1,33 +1,33 @@
-{ ... }:
+{ lib, pkgs, ... }:
 {
   services.rke2 = {
-    enable = false;
+    enable = true;
     role = "server";
 
     extraFlags = [
-      # "--disable-kube-proxy"
+      "--disable-kube-proxy"
       "--cluster-cidr=172.19.0.0/16"
       "--service-cidr=172.20.0.0/16"
     ];
 
-    cni = "none";
+    cni = "cilium";
 
     disable = [
       "rke2-ingress-nginx"
     ];
   };
+  
+  ##### Services #####
+  # used for longhorn
+  services.openiscsi = {
+    enable = true;
+    name = "iqn.2025-01.tw.edu.ncnu.csie.wke.cloud:cloud-server";
+  };
 
-  networking.firewall.allowedTCPPorts = [
-    6443
-    9345
-    10250
-    # etcd ports
-    2379
-    2380
-    2381
-    # Cilium ports
-    4240
-    8472
+  environment.systemPackages = with pkgs; [
+    nfs-utils
   ];
-  networking.firewall.allowedUDPPorts = [ 8472 ];
+
+  # Don't interfere with k8s
+  networking.firewall.enable = lib.mkForce false;
 }

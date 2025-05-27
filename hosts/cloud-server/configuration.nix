@@ -8,7 +8,8 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./modules/system.nix
-    # ./modules/rke2.nix
+    # ./modules/baas.nix
+    ./modules/rke2.nix
     # ./modules/k3s.nix
 
     (map lib.custom.relativeToRoot [
