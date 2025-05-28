@@ -34,6 +34,7 @@ end, { desc = "Snacks picker find config files" })
 --     ╭───────────────────────────────────────────────────────────────────╮
 --     │                   Terminal                                        │
 --     ╰───────────────────────────────────────────────────────────────────╯
+map("t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
 map({ "n", "t" }, "<M-i>", function()
   Snacks.terminal(nil, {
     win = {
