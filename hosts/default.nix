@@ -57,6 +57,10 @@ in
           name = "cloud-worker-03";
           config = ./cloud-worker/configuration.nix;
         }
+        {
+          name = "cloud-lb";
+          config = ./cloud-lb/configuration.nix;
+        }
       ];
     in
     builtins.listToAttrs (
