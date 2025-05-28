@@ -16,7 +16,7 @@
       "rke2-ingress-nginx"
     ];
   };
-  
+
   ##### Services #####
   # used for longhorn
   services.openiscsi = {
