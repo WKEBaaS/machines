@@ -14,14 +14,14 @@
 
     # TODO replace with your own name & email
     userName = "youmin1017";
-    userEmail = "youmin.main@gmail.com";
+    userEmail = "youmin1017@wke.csie.ncnu.edu.tw";
 
     includes = [
-      {
-        # use diffrent email & name for work
-        path = "~/Desktop/WKE/.gitconfig";
-        condition = "gitdir:~/Desktop/WKE/";
-      }
+      # {
+      #   # use diffrent email & name for work
+      #   path = "~/Desktop/WKE/.gitconfig";
+      #   condition = "gitdir:~/Desktop/WKE/";
+      # }
     ];
 
     extraConfig = {
