@@ -11,8 +11,6 @@
   ];
 
   ##### Required Services #####
-  virtualisation.cri-o.enable = true;
-
   # used for longhorn
   services.openiscsi = {
     enable = true;
