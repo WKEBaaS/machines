@@ -8,6 +8,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./modules/system.nix
+    ./modules/lb.nix
 
     (map lib.custom.relativeToRoot [
       #
@@ -75,11 +76,11 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  networking.firewall.enable = false;
-  networking.firewall.allowedTCPPorts = [
-    80
-    443
-  ];
+  # networking.firewall.enable = true;
+  # networking.firewall.allowedTCPPorts = [
+  #   80
+  #   443
+  # ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
   # This value determines the NixOS release from which the default
