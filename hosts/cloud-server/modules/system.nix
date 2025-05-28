@@ -7,12 +7,6 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-  # Virtualization
-  # virtualisation.containers.enable = true;
-  # virtualisation.docker = {
-  #   enable = true;
-  # };
-
   fileSystems =
     let
       automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
