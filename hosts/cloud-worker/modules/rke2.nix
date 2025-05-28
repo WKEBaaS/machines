@@ -1,4 +1,9 @@
-{ config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   services.rke2 = {
     enable = true;
@@ -21,9 +26,8 @@
 
   # Don't interfere with k8s
   networking.firewall.enable = lib.mkForce false;
-  
+
   sops.secrets = {
     "rke2/node_token" = { };
   };
-  
 }
