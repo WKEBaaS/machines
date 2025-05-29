@@ -8,6 +8,8 @@
   ##### Required Packages #####
   environment.systemPackages = with pkgs; [
     nfs-utils
+    cryptsetup
+    openiscsi
   ];
 
   ##### Required Services #####
