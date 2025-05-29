@@ -8,17 +8,19 @@
   ##### Required Packages #####
   environment.systemPackages = with pkgs; [
     nfs-utils
-    cryptsetup
-    openiscsi
   ];
 
-  ##### Required Services #####
-  # used for longhorn
+  ##### System Required #####
+  boot.supportedFilesystems = [ "nfs" ];
+  boot.kernelModules = [ "rbd" ];
+
+  services.rpcbind.enable = true;
   services.openiscsi = {
     enable = true;
     name = "iqn.2025-01.tw.edu.ncnu.csie.wke.cloud:" + config.networking.hostName;
   };
 
+  ##### RKE2 #####
   services.rke2 = {
     enable = true;
     role = "agent";
