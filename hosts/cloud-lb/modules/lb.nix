@@ -4,6 +4,7 @@
   networking.firewall.allowedTCPPorts = [
     80
     443
+    5432
   ];
 
   # # DevOps Cloud
@@ -40,6 +41,13 @@
         server 10.21.20.229:30443;
       }
 
+      upstream kube_postgres {
+        server 10.22.23.215:30432;
+        server 10.21.20.155:30432;
+        server 10.21.20.248:30432;
+        server 10.21.20.229:30432;
+      }
+
       server {
         listen 80;
         proxy_pass kube_web;
@@ -48,6 +56,11 @@
       server {
         listen 443;
         proxy_pass kube_websecure;
+      }
+
+      server {
+        listen 5432;
+        proxy_pass kube_postgres;
       }
     '';
   };
