@@ -5,29 +5,16 @@ hostname := `if [ "$(uname)" = "Darwin" ]; then scutil --get LocalHostName; else
 
 ############################################################################
 #
-#  Darwin related commands
-#
-############################################################################
-export IMPURITY_PATH := source_dir()
-[group('darwin')]
-darwin:
-  nix build .#darwinConfigurations.{{hostname}}.system \
-   --impure --extra-experimental-features 'nix-command flakes'
-
-  ./result/sw/bin/darwin-rebuild switch --flake .#{{hostname}} --impure
-
-[group('darwin')]
-darwin-debug:
-  nix build .#darwinConfigurations.{{hostname}}.system --show-trace --verbose \
-   --impure --extra-experimental-features 'nix-command flakes'
-
-  ./result/sw/bin/darwin-rebuild switch --flake .#{{hostname}} --show-trace --verbose --impure
-
-############################################################################
-#
 #  NixOS related commands
 #
 ############################################################################
+[group('nixos')]
+cloud-init new-hostname:
+  # This command is used to setup a new NixOS machine with a cloud-init configuration.
+  # It will create a new cloud-init configuration file and then run the nixos-rebuild command.
+  sudo --preserve-env=IMPURITY_PATH nixos-rebuild switch --upgrade --flake .#{{new-hostname}} \
+    --impure --extra-experimental-features 'nix-command flakes'
+  
 [group('nixos')]
 nixos:
   sudo --preserve-env=IMPURITY_PATH nixos-rebuild switch --upgrade --flake .#{{hostname}} --impure
@@ -37,13 +24,6 @@ nixos:
 #  nix related commands
 #
 ############################################################################
-cz_dir := "~/.local/share/chezmoi"
-[group('chezmoi')]
-czsync:
-  rsync -avr ./home-manager/dotfiles/nvim/ ~/.local/share/chezmoi/dot_config/nvim/
-  git --git-dir {{cz_dir}}/.git --work-tree {{cz_dir}} add . 
-  git --git-dir {{cz_dir}}/.git --work-tree {{cz_dir}} commit -m "update nvim configs"
-  git --git-dir {{cz_dir}}/.git --work-tree {{cz_dir}} push
 
 # List all the just commands
 default:
