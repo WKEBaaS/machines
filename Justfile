@@ -2,6 +2,7 @@
 
 # TODO update hostname here!
 hostname := `if [ "$(uname)" = "Darwin" ]; then scutil --get LocalHostName; else hostname -s; fi`
+export IMPURITY_PATH := source_dir()
 
 ############################################################################
 #
