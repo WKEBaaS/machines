@@ -29,23 +29,23 @@
     streamConfig = ''
       upstream kube_web {
         server 10.22.23.215:30080;
-        server 10.21.20.155:30080;
-        server 10.21.20.248:30080;
-        server 10.21.20.229:30080;
+        server 10.22.23.99:30080;
+        server 10.22.22.208:30080;
+        server 10.22.23.49:30080;
       }
 
       upstream kube_websecure {
         server 10.22.23.215:30443;
-        server 10.21.20.155:30443;
-        server 10.21.20.248:30443;
-        server 10.21.20.229:30443;
+        server 10.22.23.99:30443;
+        server 10.22.22.208:30443;
+        server 10.22.23.49:30443;
       }
 
       upstream kube_postgres {
         server 10.22.23.215:30432;
-        server 10.21.20.155:30432;
-        server 10.21.20.248:30432;
-        server 10.21.20.229:30432;
+        server 10.22.23.99:30432;
+        server 10.22.22.208:30432;
+        server 10.22.23.49:30432;
       }
 
       server {
