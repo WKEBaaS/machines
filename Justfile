@@ -8,13 +8,15 @@ hostname := `if [ "$(uname)" = "Darwin" ]; then scutil --get LocalHostName; else
 #  NixOS related commands
 #
 ############################################################################
+
+# This command is used to setup a new NixOS machine with a cloud-init configuration.
+# It will create a new cloud-init configuration file and then run the nixos-rebuild command.
 [group('nixos')]
+export NIX_CONFIG="experimental-features = nix-command flakes"
 cloud-init new-hostname:
-  # This command is used to setup a new NixOS machine with a cloud-init configuration.
-  # It will create a new cloud-init configuration file and then run the nixos-rebuild command.
-  sudo --preserve-env=IMPURITY_PATH nixos-rebuild switch --upgrade --flake .#{{new-hostname}} \
-    --impure --extra-experimental-features 'nix-command flakes'
-  
+  sudo --preserve-env=IMPURITY_PATH nixos-rebuild switch --upgrade --flake .#{{new-hostname}} --impure 
+
+# This command is used to switch to a new NixOS configuration.
 [group('nixos')]
 nixos:
   sudo --preserve-env=IMPURITY_PATH nixos-rebuild switch --upgrade --flake .#{{hostname}} --impure
