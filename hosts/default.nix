@@ -12,7 +12,11 @@ let
   hm-nixos = home-manager.nixosModules.home-manager;
 
   mkHost =
-    { name, config }:
+    {
+      name,
+      config,
+      hardwareConfig,
+    }:
     nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit outputs inputs username;
@@ -21,11 +25,14 @@ let
       system = "x86_64-linux";
       modules = [
         {
+          imports = [
+            hardwareConfig
+            inputs.impurity.nixosModules.impurity
+          ];
           # Hostname
           networking.hostName = name;
 
           # Impurity
-          imports = [ inputs.impurity.nixosModules.impurity ];
           impurity.configRoot = self;
           impurity.enable = true;
         }
@@ -44,22 +51,27 @@ in
         {
           name = "cloud-server";
           config = ./cloud-server/configuration.nix;
+          hardwareConfig = ./hardwares/cloud-server.nix;
         }
         {
           name = "cloud-worker-01";
           config = ./cloud-worker/configuration.nix;
+          hardwareConfig = ./hardwares/cloud-worker-01.nix;
         }
         {
           name = "cloud-worker-02";
           config = ./cloud-worker/configuration.nix;
+          hardwareConfig = ./hardwares/cloud-worker-02.nix;
         }
         {
           name = "cloud-worker-03";
           config = ./cloud-worker/configuration.nix;
+          hardwareConfig = ./hardwares/cloud-worker-03.nix;
         }
         {
           name = "cloud-lb";
           config = ./cloud-lb/configuration.nix;
+          hardwareConfig = ./hardwares/cloud-lb.nix;
         }
       ];
     in
