@@ -26,7 +26,7 @@ map("n", "<leader>fw", Snacks.picker.grep, { desc = "Snacks picker grep" })
 map("n", "<leader>ff", Snacks.picker.files, { desc = "Snacks picker find files" })
 map("n", "<leader>fp", Snacks.picker.projects, { desc = "Snacks picker find projects" })
 map("n", "<leader>fk", Snacks.picker.keymaps, { desc = "Snacks picker keymaps" })
-map("n", "<leader>fo", Snacks.picker.lsp_symbols, { desc = "Snacks picker lsp symbols" })
+map("n", "<leader>o", Snacks.picker.lsp_symbols, { desc = "Snacks picker lsp symbols" })
 map("n", "<leader>fc", function()
   Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
 end, { desc = "Snacks picker find config files" })
@@ -38,7 +38,7 @@ map("t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
 map({ "n", "t" }, "<M-i>", function()
   Snacks.terminal(nil, {
     win = {
-      border = "single",
+      border = "rounded",
       position = "float",
     },
   })
@@ -50,6 +50,14 @@ map({ "n", "t" }, "<M-h>", function()
     },
   })
 end, { desc = "Snacks bottom terminal" })
+map({ "n", "t" }, "<M-u>", function()
+  Snacks.terminal("claude", {
+    win = {
+      border = "rounded",
+      position = "float",
+    },
+  })
+end, { desc = "Snacks Claude Code" })
 
 -- Other
 -- stylua: ignore
@@ -71,6 +79,7 @@ map("n", "<M-j>", ":m .+1<CR>==", { desc = "Editor move selected block up and st
 map("n", "<M-k>", ":m .-2<CR>==", { desc = "Editor move selected down and stay in visual mode" })
 map("x", "<M-j>", ":move '>+1<CR>gv-gv", { desc = "Editor move selected block up and stay in visual mode" })
 map("x", "<M-k>", ":move '<-2<CR>gv-gv", { desc = "Editor move selected down and stay in visual mode" })
+map("n", "<leader>ra", vim.lsp.buf.rename, { desc = "Editor Rename" })
 
 --     ╭───────────────────────────────────────────────────────────────────╮
 --     │                  Cursor Movement                                  │
@@ -99,5 +108,5 @@ map({ "n", "x" }, "<leader>d", '"+d', { desc = "Editor Delete to system clipboar
 map("n", "<leader>l", "", { desc = "+Lazy" })
 map("n", "<leader>ll", "<cmd>Lazy<CR>", { desc = "Lazy" })
 map("n", "<leader>lg", function()
-  Snacks.lazygit()
+  Snacks.lazygit({ cwd = LazyVim.root.git() })
 end, { desc = "Lazy lazygit" })

@@ -30,13 +30,6 @@
   "format_on_save": "on",
   // "auto_signature_help": true,
 
-  "ssh_connections": [
-    {
-      "host": "baas.wke.csie.ncnu.edu.tw",
-      "projects": [{ "paths": ["/etc"] }]
-    }
-  ],
-
   // Language specific settings
   "lsp": {
     "ruff": {

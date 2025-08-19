@@ -29,6 +29,7 @@ return {
       opts.formatters_by_ft = vim.tbl_deep_extend("force", opts.formatters_by_ft, {
         ["markdown"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
         ["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
+        ["kdl"] = { "kdlfmt" },
       })
 
       vim.inspect(opts.formatters_by_ft)

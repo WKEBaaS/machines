@@ -6,6 +6,7 @@ set nu
 " set whichwrap+=h,l
 set scrolloff=5
 set incsearch
+set smartcase
 
 """ Handlers
 sethandler <M-j> n-v:vim i:ide
@@ -56,6 +57,7 @@ map gl g$
 imap <C-a> <Action>(EditorLineStart)
 imap <C-e> <Action>(EditorLineEnd)
 imap <C-d> <Action>(EditorDelete)
+imap <C-s> <Action>(CodeCompletion)
 
 " Indent
 nmap > >>
@@ -81,6 +83,8 @@ map <leader>/         <Action>(CommentByLineComment)
 map <leader><leader>/ <Action>(CommentByBlockComment)
 
 " System Clipboard
+nnoremap yy "+yy
+vnoremap y "+y
 map <leader>y "+y
 map <leader>Y "+yy
 map <leader>p "+p

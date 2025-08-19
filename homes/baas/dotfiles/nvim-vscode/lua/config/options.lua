@@ -4,9 +4,3 @@
 
 vim.opt.clipboard = ""
 vim.opt.relativenumber = false
-
-vim.filetype.add({
-  pattern = {
-    [".env.*"] = "sh",
-  },
-})
