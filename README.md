@@ -6,6 +6,7 @@
   * [Prepare Sops Key](#prepare-sops-key)
   * [Prepare Basic Tools](#prepare-basic-tools)
   * [Clone this Repository](#clone-this-repository)
+  * [Initialize Kubernetes Cloud](#initialize-kubernetes-cloud)
 
 <!-- tocstop -->
 
@@ -28,4 +29,13 @@ nix-shell -p git just
 
 ```sh
 git clone git@github.com:WKEBaaS/cloud-infra.git ~/.config/nix
+```
+
+### Initialize Kubernetes Cloud
+
+> [!INFO]
+> hostname: cloud-server, cloud-worker-<n>, cloud-lb
+
+```sh
+just cloud-init <hostname>
 ```
