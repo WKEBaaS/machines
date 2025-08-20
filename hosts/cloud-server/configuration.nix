@@ -45,25 +45,6 @@
   # networking.hostName = "nixos-baas"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # networking.interfaces.eth0.ipv4.addresses = [
-  #   {
-  #     address = "163.22.22.46";
-  #     prefixLength = 24;
-  #   }
-  #   {
-  #     address = "10.22.23.215";
-  #     prefixLength = 16;
-  #   }
-  # ];
-  # networking.nameservers = [
-  #   "163.22.2.1"
-  #   "163.22.2.2"
-  # ];
-  # networking.defaultGateway = {
-  #   address = "163.22.22.254";
-  #   interface = "eth0";
-  # };
-
   # Set your time zone. time.timeZone = "Asia/Taipei";
   time.timeZone = "Asia/Taipei";
 
